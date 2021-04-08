@@ -1,0 +1,44 @@
+<html>
+  
+<head>
+  <!-- <script type='text/javascript' src="../resource/jquery-3.6.0.min.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script >
+  var getTest = () => {
+    $.ajax({
+      type:'GET',
+      url:'/getData?a=1&b=2&c=3',
+      dataType:'json',
+      success(data){
+        console.log(data);
+      },
+      error (err){
+        console.log(err);
+      }
+    });
+  }
+  var postTest = () => {
+    var obj = {}
+    obj={
+      name:"AA",
+      sexy:"UI"
+    }
+    $.ajax({
+      type:'POST',
+      url:'/addUser',
+      data:obj,
+      dataType:'json',
+      success(data){
+        console.log(data);
+      },
+      error (err){
+        console.log(err);
+      }
+    });
+  }
+</script>
+<head>
+  // 添加一个按钮
+  <button onclick="getTest()">点击测试get方法</button>
+  <button onclick="postTest()">点击测试POST方法</button>
+</html>
