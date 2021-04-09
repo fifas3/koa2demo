@@ -1,50 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- 因为引入了koa-static 所以src文件无法在这里打开 -->
+
+  <script src="/css/home.css"></script>
+
+</head>
+
+<body>
+  <div class=".box">
+    <button onclick="getTest()">点击测试get方法</button>
+    <button onclick="postTest()">点击测试POST方法</button>
+
+    <input id="tname" name="tname" value="A1">name</button>
+    <input id="sexy" name="sexy" value="U">sexy</button>
+  </div>
+
+
   <script src="/js/jquery-3.6.0.min.js"></script>
-
-  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-  
-<head>
-  <button onclick="getTest()">点击测试get方法</button>
-  <button onclick="postTest()">点击测试POST方法</button>
-
-  <input id ="tname" name="tname" value="A1">name</button>
-  <input id ="sexy" name="sexy" value="U">sexy</button>
-
-  <script >
+  <script>
     var getTest = () => {
       $.ajax({
-        type:'GET',
-        url:`/getData?name=${$('#tname').val()}&sexy=${$('#sexy').val()}`,
-        dataType:'json',
-        success(data){
+        type: 'GET',
+        url: `/getData?name=${$('#tname').val()}&sexy=${$('#sexy').val()}`,
+        dataType: 'json',
+        success(data) {
           console.log(data);
         },
-        error (err){
+        error(err) {
           console.log(err);
         }
       });
     }
     var postTest = () => {
       var obj = {}
-      obj={
-        name:$('#tname').val(),
-        sexy:$('#sexy').val()
+      obj = {
+        name: $('#tname').val(),
+        sexy: $('#sexy').val()
       }
       $.ajax({
-        type:'POST',
-        url:'/addUser',
-        data:obj,
-        dataType:'json',
-        success(data){
+        type: 'POST',
+        url: '/addUser',
+        data: obj,
+        dataType: 'json',
+        success(data) {
           console.log(data);
         },
-        error (err){
+        error(err) {
           console.log(err);
         }
       });
     }
   </script>
+</body>
+
 </html>

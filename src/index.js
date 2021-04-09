@@ -3,7 +3,7 @@ import { rapi} from './router/rapi.js';
 import Koa from "koa";
 import bodyParser from "koa-bodyparser"
 import staticFiles from "koa-static"
-import koaNunjucks  from "koa-nunjucks-2"
+import koaNunjucks  from "koa-nunjucks-2" //页面渲染用的插件
 import path from "path"
 
 const app = new Koa();
