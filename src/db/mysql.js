@@ -1,5 +1,5 @@
 import mysql from "mysql2"
-import config from "../resource/until.js"
+import config from "../resource/config.js"
 
 var _connection = function (){
     var connection = mysql.createConnection({

@@ -1,5 +1,5 @@
 import mysql from "mysql2" // 后期从mysql 修改成mysql2，修改后没有测试
-import config from "../resource/until.js"
+import config from "../resource/config.js"
 
 var pool = mysql.createPool({
   host     : config.database.HOST,

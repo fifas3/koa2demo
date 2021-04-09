@@ -1,4 +1,4 @@
-import config from "./resource/until.js";
+import config from "./resource/config.js";
 import { rview} from './router/index.js';
 import Koa from "koa";
 import bodyParser from "koa-bodyparser"
