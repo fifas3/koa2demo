@@ -30,8 +30,8 @@
     var postTest = () => {
       var obj = {}
       obj={
-        name:"AA",
-        sexy:"UI"
+        name:$('#tname').val(),
+        sexy:$('#sexy').val()
       }
       $.ajax({
         type:'POST',

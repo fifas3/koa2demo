@@ -3,6 +3,7 @@ import Router from "koa-router";
 
 import db from "../db/mysql.js"
 import { sqlhome,sqladd } from "../db/sqllist.js"
+import { parsePostData } from "../resource/PostUitl.js"
 const rview = new Router();
 
 rview.get('/getData', async (ctx, next) => {
@@ -21,13 +22,13 @@ rview.get('/getData', async (ctx, next) => {
   };
   //Symbol() ?
   console.log(req_query['name'])
-  //sobj 执行select
-  let sobj={
+  //sObj 执行select
+  let sObj={
     "vtable":"newtable",
     "setsql":`name like '%${req_query['name']}%' or sexy like '%${req_query['sexy']}%'`
   }
-  console.log(sqlhome(sobj))
-  let data = await db(sqlhome(sobj))
+  console.log(sqlhome(sObj))
+  let data = await db(sqlhome(sObj))
   console.log(JSON.stringify(data))
   ctx.body = {
     "code": 200,
@@ -50,43 +51,20 @@ rview.post('/addUser', async(ctx, next) => {
   let query = ctx.request.body;
   let req_query = request.query;
   // ctx.body=query; 
-  // let pastData=await parsePostData(ctx); 原生的解析，如果用koa-bodyparser 就直接从ctx.request.body 获取传值信息
- 
-  // let postData = await sqlInfo.addinfo(query)
+   //let pastData=await parsePostData(ctx); //原生的解析，如果用koa-bodyparser 就直接从ctx.request.body 获取传值信息
+   console.log(req_query)
+   let addObj={
+    "vtable":"newtable",
+    "vcolumn":"name,sexy",
+    "setsql":`name like '%${req_query['name']}%' or sexy like '%${req_query['sexy']}%'`
+  }
+  let postData = await sqladd(addObj)
   // ctx.body = {
   //   "code": 1,
   //   "data": postData,
   //   "mesg": 'ok'
   // }
 })
-// 解析上下文里node原生请求的POST参数
-function parsePostData( ctx ) {
-  return new Promise((resolve, reject) => {
-    try {
-      let postdata = "";
-      ctx.req.addListener('data', (data) => {
-        postdata += data
-      })
-      ctx.req.addListener("end",function(){
-        let parseData = parseQueryStr( postdata )
-        resolve( parseData )
-      })
-    } catch ( err ) {
-      reject(err)
-    }
-  })
-}
- 
-// 将POST请求参数字符串解析成JSON
-function parseQueryStr( queryStr ) {
-  let queryData = {}
-  let queryStrList = queryStr.split('&')
-  // console.log( queryStrList )
-  for ( let [ index, queryStr ] of queryStrList.entries() ) {
-    let itemList = queryStr.split('=')
-    queryData[ itemList[0] ] = decodeURIComponent(itemList[1])
-  }
-  return queryData
-}
 
-export {rview}
+
+export {rview as rapi}

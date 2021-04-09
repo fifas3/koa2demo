@@ -1,7 +1,7 @@
 /**
  *JsonUitl的实现
  */
- class JsonUtils extends React.Component {
+ class JsonUtils {
 
   /**
    *字符串转json
