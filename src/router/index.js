@@ -1,7 +1,8 @@
 import fs from'fs';
 import Router from "koa-router";
 
-import sqlInfo from "../db/mysql.js"
+import db from "../db/mysql.js"
+import { sqlhome,sqladd } from "../db/sqllist.js"
 const rview = new Router();
 
 rview.get('/getData', async (ctx, next) => {
@@ -18,8 +19,12 @@ rview.get('/getData', async (ctx, next) => {
     ctx_query:ctx_query,
     ctx_querystring:ctx_querystring
   };
-  
-  let data = await sqlInfo.query()
+  let tobj={
+    "name":"like '%A1%'"
+  }
+  // tobj.push({"name":"like '%A1%'"})
+  console.log(sqlhome(tobj))
+  let data = await db(sqlhome(tobj))
   console.log(JSON.stringify(data))
   ctx.body = {
     "code": 1,
@@ -45,13 +50,12 @@ rview.post('/addUser', async(ctx, next) => {
   // ctx.body=query; 
   // let pastData=await parsePostData(ctx); 原生的解析，如果用koa-bodyparser 就直接从ctx.request.body 获取传值信息
  
-  let postData = await sqlInfo.addinfo(query)
-  // console.log(postData)
-  ctx.body = {
-    "code": 1,
-    "data": postData,
-    "mesg": 'ok'
-  }
+  // let postData = await sqlInfo.addinfo(query)
+  // ctx.body = {
+  //   "code": 1,
+  //   "data": postData,
+  //   "mesg": 'ok'
+  // }
 })
 // 解析上下文里node原生请求的POST参数
 function parsePostData( ctx ) {
