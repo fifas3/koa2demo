@@ -44,7 +44,7 @@ rview.get('/home', async (ctx, next) => {
 rview.get('/', async (ctx, next) => {
   ctx.response.body = '<h1>404 Not Found</h1>'
 })
-
+//ctx.render
 rview.post('/addUser', async(ctx, next) => {
   let request = ctx.request;
   let query = ctx.request.body;
