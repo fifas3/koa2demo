@@ -19,19 +19,21 @@ rview.get('/getData', async (ctx, next) => {
     ctx_query:ctx_query,
     ctx_querystring:ctx_querystring
   };
-  let tobj={
-    "name":"like '%A1%'"
+  //Symbol() ?
+  console.log(req_query['name'])
+  //sobj 执行select
+  let sobj={
+    "vtable":"newtable",
+    "setsql":`name like '%${req_query['name']}%' or sexy like '%${req_query['sexy']}%'`
   }
-  // tobj.push({"name":"like '%A1%'"})
-  console.log(sqlhome(tobj))
-  let data = await db(sqlhome(tobj))
+  console.log(sqlhome(sobj))
+  let data = await db(sqlhome(sobj))
   console.log(JSON.stringify(data))
   ctx.body = {
-    "code": 1,
+    "code": 200,
     "data": data,
     "mesg": 'ok'
   }
-
 })
 
 rview.get('/home', async (ctx, next) => {

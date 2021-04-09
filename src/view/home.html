@@ -7,7 +7,7 @@
   var getTest = () => {
     $.ajax({
       type:'GET',
-      url:'/getData?a=1&b=2&c=3',
+      url:`/getData?name=${$('#tname').val()}&sexy=${$('#sexy').val()}`,
       dataType:'json',
       success(data){
         console.log(data);
@@ -41,4 +41,6 @@
   // 添加一个按钮
   <button onclick="getTest()">点击测试get方法</button>
   <button onclick="postTest()">点击测试POST方法</button>
+  <input id ="tname" name="tname" value="A1">name</button>
+  <input id ="sexy" name="sexy" value="U">sexy</button>
 </html>

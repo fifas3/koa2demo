@@ -1,12 +1,16 @@
 export const sqlhome =function(obj){
-  console.log(Object.keys(obj).length)
-  if(Object.keys(obj).length===0){
-    return "SELECT * from newtable " + JSON.stringify(obj)
-  }else{
-    return "SELECT * from newtable where" + JSON.stringify(obj)
+  console.log(JSON.stringify(obj))
+ 
+  if(obj.hasOwnProperty('vtable')){
+    if(Object.keys(obj).length===0){
+      throw error
+    }else{
+      return `SELECT * from ${obj['vtable']} where ${obj['setsql']}`
+    }
   }
-  
 }
+
+
 export const sqladd =function(obj){
-  return "insert into newtable(name,sexy) values ('"+obj.name+"','"+obj.sexy+"')"
+  return `insert into ${obj['vtable']}(name,sexy) values ('"+obj.name+"','"+obj.sexy+"')`
 }
