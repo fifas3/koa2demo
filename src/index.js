@@ -12,9 +12,8 @@ app.use(bodyParser())
 app.use(rview.routes()).use(rview.allowedMethods());
 
 // 指定 public目录为静态资源目录，用来存放 js css images 等
-const __dirname = path.resolve(); //？？？
-console.log(__dirname)
-app.use(staticFiles(path.resolve(__dirname, "./public")))
+const __dirname = path.resolve(); 
+app.use(staticFiles(__dirname+"/src/public"))
 
 // 使用 koa-nunjucks-2 实例获得中间件
 app.use(koaNunjucks({
