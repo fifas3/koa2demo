@@ -10,7 +10,6 @@ export const sqlhome =function(obj){
   }
 }
 
-
 export const sqladd =function(obj){
-  return `insert into ${obj['vtable']}(${obj.vcolumn}) values ('"+obj.name+"','"+obj.sexy+"')`
+  return `insert into ${obj['vtable']}(${obj.vcolumn}) values (${obj.setsql})`
 }

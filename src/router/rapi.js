@@ -52,17 +52,21 @@ rview.post('/addUser', async(ctx, next) => {
   // ctx.body=query; 
    //let pastData=await parsePostData(ctx); //原生的解析，如果用koa-bodyparser 就直接从ctx.request.body 获取传值信息
    console.log(req_query)
+   console.log(query)
    let addObj={
     "vtable":"newtable",
     "vcolumn":"name,sexy",
-    "setsql":`name like '%${req_query['name']}%' or sexy like '%${req_query['sexy']}%'`
+    // "setsql":`name like '%${query['name']}%' or sexy like '%${query['sexy']}%'`
+    "setsql":`'${query['name']}','${query.sexy}'`
   }
-  let postData = await sqladd(addObj)
-  // ctx.body = {
-  //   "code": 1,
-  //   "data": postData,
-  //   "mesg": 'ok'
-  // }
+  console.log(addObj)
+  let postData = await db(sqladd(addObj))
+  console.log(postData)
+  ctx.body = {
+    "code": 1,
+    "data": postData,
+    "mesg": 'ok'
+  }
 })
 
 
