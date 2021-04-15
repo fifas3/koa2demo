@@ -1,4 +1,13 @@
+/* flex */
 .box{
-  flex-direction: row;
-  flex-wrap: nowrap 
+  flex-direction: column;
+  flex-wrap: nowrap;
+  display: inline-flex;
+}
+/* 垂直居中 */
+ .content {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
 }

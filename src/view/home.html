@@ -3,18 +3,20 @@
 
 <head>
   <!-- 因为引入了koa-static 所以src文件无法在这里打开 -->
-
-  <script src="/css/home.css"></script>
+  <link rel="stylesheet" type="text/css" href="/css/home.css">
+  <!-- <style type="text/css" >@import url(/css/home.css);</style> -->
 
 </head>
 
 <body>
-  <div class=".box">
-    <button onclick="getTest()">点击测试get方法</button>
+  <div class="content box">
+    <button onclick="getTest()" class="f">点击测试get方法</button>
     <button onclick="postTest()">点击测试POST方法</button>
 
-    <input id="tname" name="tname" value="A1">name</button>
-    <input id="sexy" name="sexy" value="U">sexy</button>
+
+    <span>Name：</span>
+    <input id="tname" name="tname" value="A1" />
+    sexy <input id="sexy" name="sexy" value="U" />
   </div>
 
 

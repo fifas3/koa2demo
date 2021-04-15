@@ -1,6 +1,5 @@
 import fs from'fs';
 import Router from "koa-router";
-
 import db from "../db/mysql.js"
 import { sqlhome,sqladd } from "../db/sqllist.js"
 import { parsePostData } from "../resource/PostUitl.js"
