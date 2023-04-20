@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
+https://github.com/Azure-Samples/ms-identity-javascript-react-spa.git
+
 @SpringBootApplication
 @RestController
 public class DemossoApplication {
