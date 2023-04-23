@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
 https://github.com/Azure-Samples/ms-identity-javascript-react-spa.git
+https://learn.microsoft.com/zh-cn/azure/active-directory/develop/scenario-spa-sign-in?source=recommendations&tabs=javascript2
 
 @SpringBootApplication
 @RestController
